@@ -1,19 +1,15 @@
 language: node_js
 node_js:
-  - 8
-
+- 8
 cache:
   directories:
   - node_modules
-
 before_install:
-  - echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
+- echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
 install:
-  - npm install
-
+- npm install
 stages:
-  - release
-
+- release
 jobs:
   include:
   - stage: release
@@ -28,7 +24,15 @@ jobs:
       skip-cleanup: true
       api_key: "$GITHUB_TOKEN"
       file:
-        - alerta-webui.zip
-        - alerta-webui.tar.gz
+      - alerta-webui.zip
+      - alerta-webui.tar.gz
       on:
         tags: true
+deploy:
+  provider: releases
+  api_key:
+    secure: TStdM3/1SzTlsq0xfuDXAOlxL5QZWRw/4ujuqWqK75fghoTTQ8HnEL8oSmtKXHJ9jGHUuT7shAHpIxKL9cjIZoFCUrQ2tLYyjvxC9cgzAFRr5X6m6cteCrQfDqOq0nvtWQMobyhTEMcdJBiByqjp8a6zo4bvbrrZ1y7EfIx7s8jqTyGy0t47ImBxx86mnav0HullMhMkpg2N9/j1Zt7DM38lmG3aomNd84tZhuJ84KAP48bvApb6JQLyOb/02hpmCEobd8dtmfqAbMN19dwwWoLOQodaGtfxjiiekAXCflTTo57Pk9vOg8XjwdlsC8QedzR7PGjM2SsujSe5vB4O0Bc1yaKYgm5HRK/sYidwIa+r6zOQ1/+DeNZYPPU0TrP9c0Ccjd60G/+NeE1kfVEI4h1TGd/cDRQ0dU9aSMlvKCoKJILKHC7UQ4DZUk5/fkH+uRPoBL/a4im7plkRlBhm7T1Z0ZKppQ2vLwUtubrzPZhojBK/eufUPC1/TXJxq8ePSTMPX/0J8swC2AIbUD6b3BjQTlcrTXDz126uuywQurTLwg8siaphoE4LCjx17TsCvgqO64Ccs6H4kecXPI3BJ+m3Zblk/dJyzcXyi8ggG8aAS9LMZYKfKW+2p+j3CV0yiuJx3d6qt4ZdSxQ30rkmokY+ta9hq6f455v/TsWBhvc=
+  file: ''
+  on:
+    repo: ArjunDandagi/alerta-webui
+  skip_cleanup: 'true'

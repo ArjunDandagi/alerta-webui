@@ -31,7 +31,7 @@
               v-else
               class="logo"
             >
-              POSTBOX
+              <img src="alertbox.png" height="48px"></img>
             </v-toolbar-title>
           </router-link>
         </v-toolbar>
@@ -138,7 +138,7 @@
             v-else
             class="logo"
           >
-            alerta
+            <img src="alertbox.png" height="48px"></img>
           </v-toolbar-title>
         </router-link>
 
