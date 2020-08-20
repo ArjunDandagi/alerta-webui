@@ -31,7 +31,7 @@
               v-else
               class="logo"
             >
-              alerta
+              POSTBOX
             </v-toolbar-title>
           </router-link>
         </v-toolbar>
