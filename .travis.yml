@@ -12,31 +12,10 @@ install:
   - npm install
 
 stages:
-  - test
-  - name: deploy
-    if: type != pull_request AND branch = master
   - release
 
 jobs:
   include:
-  - stage: test
-    script:
-    - npm run lint:nofix
-    - npm run test:unit
-  - stage: deploy
-    before_script:
-    - echo BASE_URL=./ > .env
-    - echo VUE_APP_ALERTA_ENDPOINT=https://alerta-api.herokuapp.com >> .env
-    - echo VUE_APP_TRACKING_ID=UA-44644195-7 >> .env
-    script: npm run build
-    deploy:
-    - provider: pages
-      skip-cleanup: true
-      github-token: "$GITHUB_TOKEN"
-      target-branch: gh-pages
-      local-dir: dist
-      on:
-        branch: master
   - stage: release
     before_script:
     - echo VUE_APP_DEBUG=1 > .env
